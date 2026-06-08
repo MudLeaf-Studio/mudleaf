@@ -35,7 +35,7 @@ export default function RegisterPage() {
     })
 
     if (error) {
-      setErrorMsg(error.message)
+      setErrorMsg(error.message || error.code || JSON.stringify(error))
       setStatus('error')
       return
     }
