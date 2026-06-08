@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --terracotta: #C4622D;
+  --terracotta-light: #D4784A;
+  --terracotta-pale: #F2E4D8;
+  --dark: #2C1810;
+  --dark-mid: #4A2E20;
+  --warm-white: #FAF7F4;
+  --cream: #F5EDE3;
+  --sage: #7A9E7E;
+  --sage-light: #EAF2EB;
+  --text: #2C2418;
+  --text-mid: #6B5744;
+  --text-light: #9B8676;
+  --border: #E2D5C8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text);
+    background-color: var(--warm-white);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+}
+
+@layer components {
+  /* Section tag — the small uppercase label above headings */
+  .section-tag {
+    @apply text-xs tracking-widest uppercase flex items-center gap-2 mb-4;
+    color: var(--terracotta);
+  }
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--terracotta);
+    flex-shrink: 0;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 text-white text-sm font-normal tracking-wide
+           px-7 py-3.5 rounded-sm transition-all duration-200 border-none cursor-pointer
+           no-underline;
+    background: var(--terracotta);
+  }
+  .btn-primary:hover {
+    background: #A85225;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 text-sm font-normal tracking-wide
+           px-7 py-3.5 rounded-sm transition-all duration-200 cursor-pointer no-underline;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.5);
+    color: white;
+  }
+
+  /* Research box */
+  .research-box {
+    @apply p-4 my-4 rounded-sm;
+    background: var(--sage-light);
+    border-left: 4px solid var(--sage);
+  }
+
+  /* Practice box */
+  .practice-box {
+    @apply p-4 my-4 rounded-sm;
+    background: #FBF5E6;
+    border-left: 4px solid #C49A3C;
+  }
+
+  /* Orienting box */
+  .orienting-box {
+    @apply p-4 mb-4 rounded-sm;
+    background: var(--terracotta-pale);
+    border-left: 4px solid var(--terracotta);
+  }
+
+  /* Form elements */
+  .form-input {
+    @apply w-full px-4 py-3 text-sm transition-colors duration-200 outline-none rounded-sm;
+    font-family: 'DM Sans', sans-serif;
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .form-input:focus {
+    border-color: var(--terracotta);
+  }
+
+  .form-label {
+    @apply block text-xs font-medium tracking-widest uppercase mb-2;
+    color: var(--text-mid);
+    letter-spacing: 0.15em;
+  }
+
+  /* Reveal animation — elements fade up on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Blog/post reading typography */
+  .prose-mudleaf p {
+    @apply text-base leading-loose mb-4;
+    color: var(--text-mid);
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .prose-mudleaf h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    color: var(--dark);
+    margin-bottom: 16px;
+    margin-top: 40px;
+  }
+  .prose-mudleaf .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  /* Page transition wrapper */
+  .page-transition {
+    animation: fadeIn 0.2s ease both;
+  }
+
+  /* NDIS pill */
+  .ndis-pill {
+    @apply text-xs px-4 py-2 rounded-full;
+    background: rgba(196,98,45,0.15);
+    border: 1px solid rgba(196,98,45,0.3);
+    color: var(--terracotta-light);
+  }
+
+  /* Program card */
+  .program-card {
+    @apply bg-white p-9 transition-all duration-300 cursor-pointer relative overflow-hidden rounded-sm;
+    border: 1px solid var(--border);
+  }
+  .program-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-0.5 transition-transform duration-300 origin-left scale-x-0;
+    background: var(--terracotta);
+  }
+  .program-card:hover::before {
+    transform: scaleX(1);
+  }
+  .program-card:hover {
+    box-shadow: 0 8px 40px rgba(44,24,16,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Footer */
+  .footer-link {
+    @apply text-sm transition-colors duration-200 no-underline;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-link:hover {
+    color: var(--terracotta-light);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
