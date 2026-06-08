@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, ReactNode } from 'react'
+export { WaitlistSignup } from './WaitlistSignup'
 
 // ── Section tag — small uppercase label above headings ──
 export function SectionTag({

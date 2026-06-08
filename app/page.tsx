@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { Reveal, SectionTag } from '@/components/ui'
+import { Reveal, SectionTag, WaitlistSignup } from '@/components/ui'
 
 export default function HomePage() {
   return (
@@ -288,6 +288,38 @@ export default function HomePage() {
           </Reveal>
         </div>
       </div>
+
+      {/* ── WAITLIST ── */}
+      <section style={{ background: 'var(--dark)', padding: '96px 48px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <Reveal>
+            <WaitlistSignup
+              dark
+              heading="Stay in the loop"
+              subheading="Be the first to hear about new programs, resources, and updates from Mudleaf. No spam — just things worth knowing."
+            />
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="flex flex-col gap-5">
+              {[
+                { icon: '🌿', title: 'New programs', desc: 'MLAT Level 2, Garden to Table, and corporate programs launching soon.' },
+                { icon: '📖', title: 'Resources & blog', desc: 'Practical articles on therapeutic horticulture, mindfulness, and mental health.' },
+                { icon: '⬡', title: 'NDIS updates', desc: 'Information relevant to NDIS participants and support coordinators.' },
+              ].map((item) => (
+                <div key={item.title} className="flex gap-4 items-start">
+                  <div style={{ width: '36px', height: '36px', background: 'rgba(196,98,45,0.15)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '18px' }}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', color: 'white', marginBottom: '4px' }}>{item.title}</h4>
+                    <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: '1.6' }}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ── PHOTO GALLERY STRIP ── */}
       <div style={{ background: 'var(--dark)' }}>
