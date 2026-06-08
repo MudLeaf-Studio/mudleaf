@@ -1,3 +1,4 @@
+'use client'
 import { PageHero, Reveal, SectionTag } from '@/components/ui'
 
 export const metadata = {

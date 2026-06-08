@@ -1,3 +1,4 @@
+'use client'
 import { PageHero, Reveal } from '@/components/ui'
 import Link from 'next/link'
 

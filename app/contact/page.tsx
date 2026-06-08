@@ -1,3 +1,4 @@
+'use client'
 import { PageHero } from '@/components/ui'
 
 export const metadata = {

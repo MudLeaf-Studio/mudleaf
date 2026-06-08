@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import { Reveal, SectionTag } from '@/components/ui'
 
