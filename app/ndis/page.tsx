@@ -2,10 +2,6 @@
 import { PageHero, Reveal } from '@/components/ui'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'NDIS Information | Mudleaf',
-  description: 'Mudleaf is an unregistered NDIS provider welcoming self-managed and plan-managed participants. Capacity building programs in Mannum SA and online.',
-}
 
 export default function NDISPage() {
   return (

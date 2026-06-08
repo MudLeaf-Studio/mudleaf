@@ -1,10 +1,6 @@
 'use client'
 import { PageHero, Reveal, SectionTag } from '@/components/ui'
 
-export const metadata = {
-  title: 'About Mudleaf | Therapeutic Horticulture & Wellbeing',
-  description: 'Mudleaf was founded by Philip and Monica Allan — combining expertise in horticulture, mental health, and mindful connected living.',
-}
 
 export default function AboutPage() {
   return (

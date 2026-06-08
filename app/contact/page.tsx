@@ -1,10 +1,6 @@
 'use client'
 import { PageHero } from '@/components/ui'
 
-export const metadata = {
-  title: 'Contact Mudleaf | Get in Touch',
-  description: 'Contact Mudleaf for NDIS enquiries, program information, or general questions. Based in Mannum SA, online programs available nationally.',
-}
 
 export default function ContactPage() {
   return (

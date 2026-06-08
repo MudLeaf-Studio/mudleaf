@@ -1,10 +1,6 @@
 'use client'
 import { PageHero } from '@/components/ui'
 
-export const metadata = {
-  title: 'Feedback & Concerns | Mudleaf',
-  description: 'Share feedback, raise a concern, or make a suggestion. All feedback is received directly by Monica Allan.',
-}
 
 export default function FeedbackPage() {
   return (
