@@ -20,11 +20,6 @@ export default function Footer() {
             }}>
               Mudleaf™
             </h3>
-            <p style={{ fontSize: '13px', lineHeight: '1.8', color: 'rgba(255,255,255,0.4)', marginBottom: '20px' }}>
-              Therapeutic horticulture and evidence-based wellbeing programs.
-              Capacity building for NDIS participants and the broader community.
-              Mannum, South Australia.
-            </p>
             <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.25)', lineHeight: '1.6' }}>
               Mudleaf™ and MLAT™ are trade marks of Mudleaf.<br />
               Trade mark applications pending — IP Australia.

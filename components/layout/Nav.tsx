@@ -67,7 +67,7 @@ export default function Nav() {
           color: 'var(--text-mid)',
           fontWeight: 300,
         }}>
-          Therapeutic Horticulture & Wellbeing
+          Horticulture and Wellbeing Programs
         </span>
       </Link>
 

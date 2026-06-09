@@ -37,16 +37,6 @@ export default function HomePage() {
               Where growth<br />begins in{' '}
               <em style={{ color: 'var(--terracotta-light)', fontStyle: 'italic' }}>nature</em>
             </h1>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: '20px',
-              color: 'rgba(255,255,255,0.55)',
-              fontStyle: 'italic',
-              marginBottom: '36px',
-              lineHeight: '1.5',
-            }}>
-              Therapeutic horticulture and evidence-based wellbeing programs
-            </p>
             <p style={{ fontSize: '15px', lineHeight: '1.8', color: 'rgba(255,255,255,0.65)', marginBottom: '48px', maxWidth: '480px' }}>
               Mudleaf combines the restorative power of working with plants with structured,
               evidence-based mental health skill building — designed to build capacity, resilience,
@@ -120,114 +110,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── STRIP ── */}
-      <div style={{ background: 'var(--terracotta)', padding: '20px 48px' }}
-        className="flex items-center justify-center gap-12 flex-wrap">
-        {['NDIS Unregistered Provider', 'Self-Managed & Plan-Managed', 'Capacity Building Focus', 'Mannum, South Australia', 'Online Programs Available'].map((item) => (
-          <div key={item} className="flex items-center gap-2.5"
-            style={{ color: 'rgba(255,255,255,0.85)', fontSize: '13px' }}>
-            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '8px' }}>○</span>
-            {item}
-          </div>
-        ))}
-      </div>
-
-      {/* ── ABOUT PREVIEW ── */}
-      <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '96px 48px' }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <Reveal>
-            <div className="relative">
-              <div style={{
-                width: '100%', aspectRatio: '4/5',
-                background: 'var(--cream)',
-                borderRadius: '2px',
-                overflow: 'hidden',
-              }}>
-                <img
-                  src="/images/IMG_8416.jpeg"
-                  alt="Philip holding wattle in bloom — Mudleaf Mannum SA"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-              <div style={{
-                position: 'absolute', bottom: '-20px', right: '-20px',
-                width: '120px', height: '120px',
-                background: 'var(--terracotta)',
-                borderRadius: '2px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white',
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '13px', textAlign: 'center', lineHeight: '1.4', padding: '16px',
-              }}>
-                Est.<br />Mannum<br />SA
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={150}>
-            <SectionTag>About Mudleaf</SectionTag>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,3.5vw,44px)', color: 'var(--dark)', marginBottom: '20px', lineHeight: '1.15' }}>
-              Growth happens when people feel supported, connected, and engaged
-            </h2>
-            <p style={{ fontSize: '15px', lineHeight: '1.85', color: 'var(--text-mid)', marginBottom: '16px' }}>
-              Mudleaf was established to deliver capacity-building programs that strengthen practical
-              skills in both horticulture and mental health — tailored to the needs of groups and
-              delivered in person and online.
-            </p>
-            <p style={{ fontSize: '15px', lineHeight: '1.85', color: 'var(--text-mid)', marginBottom: '36px' }}>
-              By integrating horticultural practice with psychological principles, Mudleaf fosters
-              both practical competence and personal wellbeing. We are co-founded by Philip Allan —
-              Horticulture Program Lead — and Monica Allan — Mental Health Program Lead.
-            </p>
-            <div className="flex gap-6">
-              {[
-                { name: 'Philip Allan', role: 'Certified Horticulture Trainer · Community Programs · TEFL' },
-                { name: 'Monica Allan', role: 'MSW · BN · PG Mental Health Nursing · BPsych (current) · Creator of MLAT™' },
-              ].map((f) => (
-                <div key={f.name} style={{
-                  flex: 1, background: 'var(--cream)', padding: '20px',
-                  borderRadius: '2px', borderLeft: '3px solid var(--terracotta)',
-                }}>
-                  <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', color: 'var(--dark)', marginBottom: '4px' }}>{f.name}</h4>
-                  <p style={{ fontSize: '12px', color: 'var(--text-light)', margin: 0, letterSpacing: '0.3px', lineHeight: '1.5' }}>{f.role}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── WAITLIST ── */}
-      <section style={{ background: 'var(--dark)', padding: '96px 48px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <Reveal>
-            <WaitlistSignup
-              dark
-              heading="Stay in the loop"
-              subheading="Be the first to hear about new programs, resources, and updates from Mudleaf. No spam — just things worth knowing."
-            />
-          </Reveal>
-          <Reveal delay={150}>
-            <div className="flex flex-col gap-5">
-              {[
-                { icon: '🌿', title: 'New programs', desc: 'MLAT Level 2, Garden to Table, and corporate programs launching soon.' },
-                { icon: '📖', title: 'Resources & blog', desc: 'Practical articles on therapeutic horticulture, mindfulness, and mental health.' },
-                { icon: '⬡', title: 'NDIS updates', desc: 'Information relevant to NDIS participants and support coordinators.' },
-              ].map((item) => (
-                <div key={item.title} className="flex gap-4 items-start">
-                  <div style={{ width: '36px', height: '36px', background: 'rgba(196,98,45,0.15)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '18px' }}>
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', color: 'white', marginBottom: '4px' }}>{item.title}</h4>
-                    <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: '1.6' }}>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* ── PHOTO GALLERY STRIP ── */}
       <div style={{ background: 'var(--dark)' }}>
