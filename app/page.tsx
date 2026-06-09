@@ -247,48 +247,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── NDIS BAND ── */}
-      <div style={{ background: 'var(--dark)', padding: '80px 48px' }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <Reveal>
-            <SectionTag light>NDIS</SectionTag>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,3.5vw,44px)', color: 'white', marginBottom: '20px', lineHeight: '1.2' }}>
-              Supporting NDIS participants to build real capacity
-            </h2>
-            <p style={{ fontSize: '15px', lineHeight: '1.85', color: 'rgba(255,255,255,0.6)', marginBottom: '28px' }}>
-              Mudleaf operates as an unregistered NDIS provider, welcoming self-managed and plan-managed participants.
-              Our programs are designed around the capacity building support category.
-            </p>
-            <div className="flex flex-wrap gap-2.5 mb-8">
-              {['Self-Managed', 'Plan-Managed', 'Capacity Building', 'Improved Daily Living'].map((pill) => (
-                <span key={pill} className="ndis-pill">{pill}</span>
-              ))}
-            </div>
-            <Link href="/ndis" className="btn-primary">NDIS Information</Link>
-          </Reveal>
-          <Reveal delay={150}>
-            <div className="flex flex-col gap-5">
-              {[
-                { icon: '◎', title: 'Unregistered Provider', desc: 'Available to self-managed and plan-managed participants without requiring NDIS registration.' },
-                { icon: '⬡', title: 'Capacity Building Focus', desc: 'All programs are designed to build transferable skills, resilience, and independence.' },
-                { icon: '→', title: 'Goal-Aligned Programs', desc: 'Activities align with common NDIS goals around daily living, community participation, and wellbeing.' },
-                { icon: '✦', title: 'Flexible Delivery', desc: 'In-person programs in Mannum SA and online programs available nationally.' },
-              ].map((item) => (
-                <div key={item.title} className="flex gap-4 items-start">
-                  <div style={{ width: '36px', height: '36px', background: 'rgba(196,98,45,0.15)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '16px', color: 'var(--terracotta-light)' }}>
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', color: 'white', marginBottom: '4px' }}>{item.title}</h4>
-                    <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: '1.6' }}>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </div>
-
       {/* ── WAITLIST ── */}
       <section style={{ background: 'var(--dark)', padding: '96px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -326,7 +284,7 @@ export default function HomePage() {
         <div className="grid grid-cols-3" style={{ gap: 0 }}>
           {[
             { src: '/images/IMG_6350.jpeg', alt: 'Native yellow pea flowers — Mannum SA', label: 'Mannum, South Australia' },
-            { src: '/images/IMG_6352.jpeg', alt: 'Native eucalyptus seed pod — Mannum SA', label: 'Native flora' },
+            { src: '/images/IMG_8667.jpeg', alt: 'Acacia flowers in bloom — Mannum SA', label: 'Native flora' },
             { src: '/images/IMG_6354.jpeg', alt: 'Native yellow pea flowers spread — Mannum SA', label: 'Grown in country' },
           ].map((photo) => (
             <div key={photo.src} className="relative overflow-hidden" style={{ height: '280px' }}>
