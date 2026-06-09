@@ -234,7 +234,7 @@ export default function HomePage() {
         <div className="grid grid-cols-3" style={{ gap: 0 }}>
           {[
             { src: '/images/IMG_6350.jpeg', alt: 'Native yellow pea flowers — Mannum SA', label: 'Mannum, South Australia' },
-            { src: '/images/IMG_8667.jpeg', alt: 'Acacia flowers in bloom — Mannum SA', label: 'Native flora' },
+            { src: '/images/IMG_0411.jpeg', alt: 'Acacia wattle flowers in bloom — Mannum SA', label: 'Native flora' },
             { src: '/images/IMG_6354.jpeg', alt: 'Native yellow pea flowers spread — Mannum SA', label: 'Grown in country' },
           ].map((photo) => (
             <div key={photo.src} className="relative overflow-hidden" style={{ height: '280px' }}>
