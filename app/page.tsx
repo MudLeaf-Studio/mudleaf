@@ -197,56 +197,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── PROGRAMS PREVIEW ── */}
-      <section style={{ background: 'var(--cream)', padding: '96px 48px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <Reveal><SectionTag>Programs</SectionTag></Reveal>
-          <Reveal delay={100}>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px,4vw,52px)', color: 'var(--dark)', marginBottom: '20px' }}>
-              What Mudleaf offers
-            </h2>
-          </Reveal>
-          <Reveal delay={150}>
-            <p style={{ fontSize: '16px', lineHeight: '1.85', color: 'var(--text-mid)', maxWidth: '600px', marginBottom: '56px' }}>
-              Structured programs that build knowledge, skills, and genuine wellbeing — grounded in evidence, delivered with care.
-            </p>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '🧠', title: 'MH & Horticulture', sub: 'Group & Online Programs', delay: 0,
-                desc: 'Structured group programs combining therapeutic horticulture and evidence-based mental health skill building — grounded in neuroscience, designed for real life.',
-                href: '/programs',
-              },
-              {
-                icon: '⬡', title: 'NDIS Information', sub: 'Self-Managed & Plan-Managed', delay: 100,
-                desc: 'Mudleaf is an unregistered NDIS provider. All programs fall under the Capacity Building support category — building skills that extend beyond the program and into everyday life.',
-                href: '/ndis',
-              },
-              {
-                icon: '◎', title: 'Corporate Programs', sub: 'Workplace Wellbeing', delay: 200,
-                desc: 'Evidence-based mental health education and therapeutic horticulture experiences for teams — clinician-led, tailored to your organisation.',
-                href: '/corporate',
-              },
-            ].map((card) => (
-              <Reveal key={card.title} delay={card.delay}>
-                <Link href={card.href} className="program-card block no-underline">
-                  <div style={{ width: '44px', height: '44px', background: 'var(--terracotta-pale)', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', marginBottom: '20px' }}>
-                    {card.icon}
-                  </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', color: 'var(--dark)', marginBottom: '6px' }}>{card.title}</h3>
-                  <div style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--terracotta)', marginBottom: '14px' }}>{card.sub}</div>
-                  <p style={{ fontSize: '14px', lineHeight: '1.8', color: 'var(--text-mid)', marginBottom: '24px' }}>{card.desc}</p>
-                  <span style={{ fontSize: '12px', color: 'var(--terracotta)', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: 500 }}>
-                    Explore programs →
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── WAITLIST ── */}
       <section style={{ background: 'var(--dark)', padding: '96px 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
