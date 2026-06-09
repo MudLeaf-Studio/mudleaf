@@ -31,7 +31,7 @@ export default function AboutPage() {
           <Reveal delay={150}>
             <div style={{ height: '400px', borderRadius: '2px', overflow: 'hidden', marginBottom: '24px' }}>
               <img
-                src="/images/IMG_1154.jpeg"
+                src="/images/IMG_6284.jpeg"
                 alt="Cymbidium orchids in the Mudleaf garden — Mannum SA"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />

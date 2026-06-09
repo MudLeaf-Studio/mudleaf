@@ -144,7 +144,7 @@ export default function HomePage() {
                 overflow: 'hidden',
               }}>
                 <img
-                  src="/images/IMG_1837.jpeg"
+                  src="/images/IMG_8416.jpeg"
                   alt="Philip holding wattle in bloom — Mudleaf Mannum SA"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -325,9 +325,9 @@ export default function HomePage() {
       <div style={{ background: 'var(--dark)' }}>
         <div className="grid grid-cols-3" style={{ gap: 0 }}>
           {[
-            { src: '/images/IMG_2912.jpeg', alt: 'Native yellow pea flowers — Mannum SA', label: 'Mannum, South Australia' },
-            { src: '/images/IMG_2910.jpeg', alt: 'Native eucalyptus seed pod — Mannum SA', label: 'Native flora' },
-            { src: '/images/IMG_2911.jpeg', alt: 'Native yellow pea flowers spread — Mannum SA', label: 'Grown in country' },
+            { src: '/images/IMG_6350.jpeg', alt: 'Native yellow pea flowers — Mannum SA', label: 'Mannum, South Australia' },
+            { src: '/images/IMG_6352.jpeg', alt: 'Native eucalyptus seed pod — Mannum SA', label: 'Native flora' },
+            { src: '/images/IMG_6354.jpeg', alt: 'Native yellow pea flowers spread — Mannum SA', label: 'Grown in country' },
           ].map((photo) => (
             <div key={photo.src} className="relative overflow-hidden" style={{ height: '280px' }}>
               <img
