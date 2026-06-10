@@ -95,12 +95,14 @@ export default function Nav() {
               </Link>
               {dropdownOpen && (
                 <ul
-                  className="absolute top-full left-0 mt-2 list-none p-2 rounded-sm z-50"
+                  className="absolute top-full left-0 list-none rounded-sm z-50"
                   style={{
                     background: 'white',
                     border: '1px solid var(--border)',
                     minWidth: '200px',
                     boxShadow: '0 8px 32px rgba(44,24,16,0.1)',
+                    padding: '8px 0 8px 0',
+                    marginTop: '0',
                   }}
                 >
                   {link.dropdown.map((item) => (
