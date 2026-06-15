@@ -135,7 +135,7 @@ export default function BlogPostPage() {
           setPost(data as Post)
         } else if (STATIC_CONTENT[slug]) {
           const s = STATIC_CONTENT[slug]
-          setPost({ slug, excerpt: null, body: s.body, ...s })
+          setPost({ slug, excerpt: null, ...s })
         }
         setLoading(false)
       })
