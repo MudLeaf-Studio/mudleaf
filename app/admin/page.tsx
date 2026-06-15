@@ -3,22 +3,14 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
+import { PAGE_CONTENT_SCHEMA } from '@/lib/content-schema'
 
 type Tab = 'blog' | 'pages' | 'images'
 type BlogPost = { id?: string; slug: string; title: string; category: string; author: string; excerpt: string; body: string; read_time_minutes: number; published: boolean; published_at: string; featured: boolean }
-type PageContent = { id?: string; page_key: string; section_key: string; label: string; content: string }
 type UploadedImage = { name: string; url: string; created_at: string }
 
 const BLANK_POST: BlogPost = { slug: '', title: '', category: 'mindfulness', author: 'Monica Allan', excerpt: '', body: '', read_time_minutes: 5, published: false, published_at: new Date().toISOString().slice(0, 10), featured: false }
 const CATEGORIES = ['mindfulness', 'horticulture', 'tamil', 'ndis', 'garden-to-table', 'research']
-const PAGE_SECTIONS: PageContent[] = [
-  { page_key: 'home', section_key: 'hero_title', label: 'Home — Hero Title', content: 'Where nature meets evidence-based wellbeing' },
-  { page_key: 'home', section_key: 'hero_subtitle', label: 'Home — Hero Subtitle', content: 'Mudleaf combines therapeutic horticulture with evidence-based psychology to build lasting wellbeing and mental health capacity.' },
-  { page_key: 'about', section_key: 'monica_bio', label: 'About — Monica Bio', content: 'Monica Allan is the founder and Mental Health Program Lead of Mudleaf. She holds dual qualifications in social work and nursing (MSW, BN, Postgraduate Mental Health Nursing) and is completing a Bachelor of Psychology at Flinders University.' },
-  { page_key: 'about', section_key: 'philip_bio', label: 'About — Philip Bio', content: 'Philip Allan is the Horticulture Program Lead at Mudleaf. A certified horticulture trainer and assessor, Philip brings deep practical knowledge of therapeutic garden design and plant-based wellbeing practice.' },
-  { page_key: 'ndis', section_key: 'intro', label: 'NDIS — Intro', content: 'Mudleaf is an unregistered NDIS provider delivering therapeutic horticulture and mindfulness-based programs under the Capacity Building support category.' },
-  { page_key: 'programs', section_key: 'intro', label: 'Programs — Intro', content: 'Every Mudleaf program integrates horticulture and mental health skill building — because growth in the garden and growth in the self are not separate processes.' },
-]
 
 function slugify(t: string) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') }
 const inp: React.CSSProperties = { width: '100%', padding: '9px 12px', border: '1px solid var(--border)', borderRadius: '2px', fontSize: '14px', fontFamily: "'DM Sans', sans-serif", outline: 'none', boxSizing: 'border-box', background: 'white', color: 'var(--dark)' }
@@ -101,44 +93,81 @@ function BlogTab({ toast }: { toast: (m: string) => void }) {
 }
 
 function PagesTab({ toast }: { toast: (m: string) => void }) {
-  const [sections, setSections] = useState<PageContent[]>([])
-  const [saving, setSaving] = useState<string | null>(null)
+  const pageKeys = Object.keys(PAGE_CONTENT_SCHEMA)
+  const [activePage, setActivePage] = useState(pageKeys[0])
+  const [content, setContent] = useState<Record<string, string>>({})
+  const [saving, setSaving] = useState(false)
   const supabase = createClient()
 
-  useEffect(() => { load() }, [])
-  async function load() { const { data } = await supabase.from('page_content').select('*'); if (data && data.length > 0) setSections(data as PageContent[]); else setSections(PAGE_SECTIONS) }
+  useEffect(() => { load(activePage) }, [activePage])
 
-  async function saveSection(s: PageContent) {
-    setSaving(s.section_key)
-    if (s.id) { await supabase.from('page_content').update({ content: s.content }).eq('id', s.id) }
-    else { const { data } = await supabase.from('page_content').insert(s).select().single(); if (data) setSections(prev => prev.map(x => x.section_key === s.section_key ? { ...x, id: (data as PageContent).id } : x)) }
-    setSaving(null); toast('Saved ✓')
+  async function load(pageKey: string) {
+    const schema = PAGE_CONTENT_SCHEMA[pageKey]
+    const defaults: Record<string, string> = {}
+    for (const [k, f] of Object.entries(schema.fields)) defaults[k] = f.default
+    const { data } = await supabase.from('page_content').select('content').eq('page_key', pageKey).maybeSingle()
+    setContent({ ...defaults, ...(data?.content ?? {}) })
   }
 
-  const grouped = sections.reduce<Record<string, PageContent[]>>((acc, s) => { if (!acc[s.page_key]) acc[s.page_key] = []; acc[s.page_key].push(s); return acc }, {})
+  async function save() {
+    setSaving(true)
+    await supabase.from('page_content').upsert({ page_key: activePage, content })
+    setSaving(false)
+    toast('Saved ✓')
+  }
+
+  const schema = PAGE_CONTENT_SCHEMA[activePage]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingBottom: '80px' }}>
       <div>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '26px', color: 'var(--dark)', margin: '0 0 8px' }}>Page content</h2>
-        <p style={{ fontSize: '13px', color: 'var(--text-light)', margin: 0 }}>Edit text blocks across pages without touching code.</p>
+        <p style={{ fontSize: '13px', color: 'var(--text-light)', margin: 0 }}>Select a page, edit any field, then save. Changes appear on the live site within a few seconds.</p>
       </div>
-      {Object.entries(grouped).map(([page, items]) => (
-        <div key={page}>
-          <div style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--terracotta)', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid var(--border)' }}>{page}</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {items.map(s => (
-              <div key={s.section_key}>
-                <label style={lbl}>{s.label}</label>
-                <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                  <textarea style={{ ...inp, minHeight: '72px', resize: 'vertical', flex: 1 }} value={s.content} onChange={e => setSections(prev => prev.map(x => x.section_key === s.section_key ? { ...x, content: e.target.value } : x))} />
-                  <button onClick={() => saveSection(s)} disabled={saving === s.section_key} style={{ background: 'var(--terracotta)', color: 'white', border: 'none', borderRadius: '2px', padding: '9px 16px', fontSize: '12px', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}>{saving === s.section_key ? '…' : 'Save'}</button>
-                </div>
-              </div>
-            ))}
+
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', borderBottom: '1px solid var(--border)', paddingBottom: '16px' }}>
+        {pageKeys.map((key) => (
+          <button
+            key={key}
+            onClick={() => setActivePage(key)}
+            style={{
+              padding: '7px 16px',
+              borderRadius: '100px',
+              border: '1px solid var(--border)',
+              background: activePage === key ? 'var(--terracotta)' : 'white',
+              color: activePage === key ? 'white' : 'var(--text-mid)',
+              fontSize: '12px',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {PAGE_CONTENT_SCHEMA[key].label}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {Object.entries(schema.fields).map(([key, field]) => (
+          <div key={key}>
+            <label style={lbl}>{field.label}</label>
+            <textarea
+              style={{ ...inp, minHeight: field.multiline ? '90px' : '44px', resize: 'vertical' }}
+              value={content[key] ?? ''}
+              onChange={(e) => setContent({ ...content, [key]: e.target.value })}
+            />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div style={{ position: 'sticky', bottom: '16px', display: 'flex', justifyContent: 'flex-end', background: 'var(--cream)', paddingTop: '12px' }}>
+        <button
+          onClick={save}
+          disabled={saving}
+          style={{ background: saving ? 'var(--text-light)' : 'var(--terracotta)', color: 'white', border: 'none', borderRadius: '2px', padding: '10px 28px', fontSize: '13px', cursor: saving ? 'not-allowed' : 'pointer', boxShadow: '0 4px 16px rgba(44,24,16,0.15)' }}
+        >
+          {saving ? 'Saving…' : `Save ${schema.label} changes`}
+        </button>
+      </div>
     </div>
   )
 }
