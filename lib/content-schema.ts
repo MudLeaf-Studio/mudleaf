@@ -180,6 +180,19 @@ export const PAGE_CONTENT_SCHEMA: Record<string, PageSchema> = {
       type_4_desc: { label: 'Type 4 — Description', default: 'If something made a genuine difference — we want to know that too. It helps us understand what matters most.', multiline: true },
     },
   },
+  shop: {
+    label: 'Shop',
+    fields: {
+      hero_title: { label: 'Hero Title', default: 'Mudleaf Resources & Digital Products' },
+      hero_subtitle: { label: 'Hero Subtitle', default: 'Practical tools for participants, practitioners, and curious minds. Designed with the same evidence-based care as our programs.', multiline: true },
+      products_heading: { label: 'Products Heading', default: 'Workbooks & journals' },
+      products_paragraph: { label: 'Products Paragraph', default: 'All digital products are available through our Etsy shop — instant download, editable PDF format, designed for real use.', multiline: true },
+      etsy_heading: { label: 'Etsy Section Heading', default: 'Visit our Etsy shop' },
+      etsy_paragraph: { label: 'Etsy Section Paragraph', default: 'All Mudleaf digital products are available through MudLeaf LoveLifeMadly on Etsy. Secure checkout, instant download.', multiline: true },
+      ndis_heading: { label: 'NDIS Section Heading', default: 'NDIS participants' },
+      ndis_paragraph: { label: 'NDIS Section Paragraph', default: 'Some digital products may be claimable under your NDIS plan as capacity building resources. Contact us to discuss your plan and we will provide the appropriate documentation.', multiline: true },
+    },
+  },
   footer: {
     label: 'Footer',
     fields: {
@@ -190,3 +203,5 @@ export const PAGE_CONTENT_SCHEMA: Record<string, PageSchema> = {
     },
   },
 }
+
+// append shop schema — added separately
