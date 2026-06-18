@@ -193,7 +193,7 @@ export const PAGE_CONTENT_SCHEMA: Record<string, PageSchema> = {
       ndis_paragraph: { label: 'NDIS Section Paragraph', default: 'Some digital products may be claimable under your NDIS plan as capacity building resources. Contact us to discuss your plan and we will provide the appropriate documentation.', multiline: true },
     },
   },
-  },
+  footer: {
     label: 'Footer',
     fields: {
       trademark_line: { label: 'Trademark Line', default: 'Mudleaf™ and MLAT™ are trade marks of Mudleaf.\nTrade mark applications pending — IP Australia.', multiline: true },
@@ -204,6 +204,3 @@ export const PAGE_CONTENT_SCHEMA: Record<string, PageSchema> = {
   },
 }
 
-// append shop schema — added separately
-
-// append shop schema — added separately
